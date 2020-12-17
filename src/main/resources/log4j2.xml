@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="LOG_PATTERN">%d{dd-MM HH:mm:ss} [%p] : {%t} - %m%n</Property>
+    </Properties>
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <!-- File Appender -->
+        <RollingFile
+                name="File"
+                filePattern="/tmp/mbtiles_differ/${date:yyyy-MM}/debug_%d{yyyy-MM-dd HH-mm}.txt"
+                append="false">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+            </Policies>
+            <DirectWriteRolloverStrategy/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console" level="info"/>
+            <AppenderRef ref="File" level="debug" />
+        </Root>
+        <!-- Disabling logs from org.apache.cxf not working -->
+        <Logger name="org.apache.cxf.wsdl.service.factory.ReflectionServiceFactoryBean" level="OFF" />
+    </Loggers>
+</Configuration>
