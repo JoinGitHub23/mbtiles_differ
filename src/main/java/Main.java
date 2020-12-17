@@ -21,8 +21,8 @@ public class Main {
 
     private static void run() throws Exception {
 
-        try(FileInputStream fis = new FileInputStream("/home/khayrutdinov_fr/git/mapnik/13-2436-4999.mvt");
-            FileWriter fw = new FileWriter("/home/khayrutdinov_fr/git/mapnik/13-2436-4999.txt")) {
+        try(FileInputStream fis = new FileInputStream("/home/nov_fr/git/mapnik/13-2436-4999.mvt");
+            FileWriter fw = new FileWriter("/home/nov_fr/git/mapnik/13-2436-4999.txt")) {
             VectorTile.Tile tile174 = VectorTile.Tile.parseFrom(fis);
 //
 //                for(VectorTile.Tile.Layer l : tile174.getLayersList()){
